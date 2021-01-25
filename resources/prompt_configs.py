@@ -16,7 +16,7 @@ from prompt_toolkit.formatted_text import HTML
 from prompt_toolkit.styles import Style
 
 
-__all__ = ['con_toolbox', 'r_prompt', 'menu_welcome', 'rprompt_style', 'get_net_name', 'get_net_id', 'get_mx_name', 'get_mx_serial']
+__all__ = ['con_toolbox', 'r_prompt', 'menu_welcome', 'rprompt_style', 'get_net_name', 'get_net_id', 'get_mx_name', 'get_mx_serial', 'get_interface']
 
 
 def con_toolbox(api_key):
@@ -197,3 +197,15 @@ def get_mx_serial(api_key, net_id, mx_name):
                     pass
     except:
         print("Couldn't find mx...")
+
+
+def get_interface():
+    """Function for collecting the interface number
+
+    Returns:
+        Variable (String): [The String variable containing the port number]
+    """
+    
+    interface = str(input("Enter interface number: "))
+
+    return interface

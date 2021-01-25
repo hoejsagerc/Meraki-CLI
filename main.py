@@ -17,6 +17,7 @@ from resources.show_commands.show_device_configs import *
 from resources.config_commands.config_networks import *
 from resources.config_commands.add_remove_devices import *
 from resources.config_commands.config_devices import *
+from resources.config_commands.config_device_interfaces import *
 
 
 
@@ -169,9 +170,11 @@ while 1:
                                 if mx_name != "None" and mx_name != "":
                                     while 1:
                                         ##########################* MX CONFIGURATIONS ##########################
+
+                                        interface = ""
                                         prompt_var =  f'{mx_name}(config)#'
                                         t4_compl = WordCompleter(tier4_completer(), ignore_case=True)
-                                        t4_action = prompt(prompt_var, history=FileHistory('history.txt'), auto_suggest=AutoSuggestFromHistory(), completer=t3_compl, bottom_toolbar=con_toolbox(api_key), rprompt=r_prompt(network_name))
+                                        t4_action = prompt(prompt_var, history=FileHistory('history.txt'), auto_suggest=AutoSuggestFromHistory(), completer=t4_compl, bottom_toolbar=con_toolbox(api_key), rprompt=r_prompt(network_name))
 
                                         if t4_action == "exit":
                                             break
@@ -179,9 +182,29 @@ while 1:
                                         elif t4_action == "help":
                                             pass
 
-                                        elif t4_action == "show interfaces":
-                                            show_mx_interfaces(api_key, network_id)
-                                
+                                        elif t4_action == "do show interfaces":
+                                            show_all_mx_interfaces(api_key, network_id)
+
+                                        elif t4_action == "select interface":
+                                            interface = get_interface()
+                                            while 1:
+                                                prompt_if_var = f'{mx_name}(config-if)#'
+                                                mx_int_compl = WordCompleter(mx_int_completer(), ignore_case=True)
+                                                mx_int_action = prompt(prompt_if_var, history=FileHistory('history.txt'), auto_suggest=AutoSuggestFromHistory(), completer=mx_int_compl, bottom_toolbar=con_toolbox(api_key), rprompt=r_prompt(network_name))
+
+                                                if mx_int_action == 'exit':
+                                                    break
+
+                                                elif mx_int_action == "do show interface config":
+                                                    show_mx_interface(api_key, network_id, interface)
+
+                                                elif mx_int_action == "set interface trunk":
+                                                    set_interface_trunk(api_key, network_id, interface)
+
+                                                elif mx_int_action == "set interface access":
+                                                    set_interface_access(api_key, network_id, interface)
+
+
                                 else:
                                     print("You will need to give a name to the mx before you can configure it...")
                             else:

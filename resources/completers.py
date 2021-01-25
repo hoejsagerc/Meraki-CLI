@@ -10,7 +10,7 @@
         23.01.2021
 """
 
-__all__ = ['tier1_completer', 'tier2_completer', 'tier3_completer', 'tier4_completer']
+__all__ = ['tier1_completer', 'tier2_completer', 'tier3_completer', 'tier4_completer', 'mx_int_completer']
 
 # User Exec Mode
 def tier1_completer():
@@ -48,3 +48,6 @@ def tier4_completer():
     'show',
     'interfaces',
     'show  interfaces']
+
+def mx_int_completer():
+    return ['exit', 'show', 'status']
