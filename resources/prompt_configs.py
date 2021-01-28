@@ -19,6 +19,12 @@ from prompt_toolkit.styles import Style
 __all__ = ['con_toolbox', 'r_prompt', 'menu_welcome', 'rprompt_style', 'get_net_name', 'get_net_id', 'get_mx_name', 'get_mx_serial', 'get_interface']
 
 
+#TODO - Working on ...........................
+
+#TODO - .......................................
+
+
+
 def con_toolbox(api_key):
     url = "https://api.meraki.com/api/v1/organizations"
 
@@ -72,9 +78,9 @@ def menu_welcome():
 
 
 
-
-def get_net_name(org_id, api_key):
-    """Function to select a network and store the name and id in a variable
+def get_net_name(org_id, api_key, net_str):
+    """
+    Function to select a network and store the name and id in a variable
 
     Args:
         org_id ([Function])-: [Call the function org_id(api_key)]
@@ -82,19 +88,28 @@ def get_net_name(org_id, api_key):
 
     Returns:
         [String]: [network_name (name of the network)]
-        [String]: [network_id (id of the network)] 
+        [String]: [network_id (id of the network)]
     """
-    network_name = input("Select Network: ")
 
+    network = net_str.split()
+    if len(net_str.split()) > 2:
+        index_len = len(net_str)
+        network_name = ""
+        if len(net_str.split()) > 2:
+            for x in net_str.split()[2:index_len + 1]:
+                network_name += x
+                network_name += " "
+        network_name = network_name.rstrip()
+    
     url = "https://api.meraki.com/api/v1/organizations/{}/networks".format(org_id)
 
     payload = None
 
     headers = {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "X-Cisco-Meraki-API-Key": api_key
-    }
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-Cisco-Meraki-API-Key": api_key
+}
 
     response = requests.request('GET', url, headers=headers, data = payload)
 
@@ -109,7 +124,9 @@ def get_net_name(org_id, api_key):
         print("No network with that name was found in your organisation...")
         network_name = ""
     
-    return network_name
+    return network_name 
+
+
 
 
 def get_net_id(org_id, api_key, network_name):

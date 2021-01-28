@@ -234,32 +234,15 @@ def show_mx_interfaces(api_key, net_id):
 
 
 
-def set_interface_access(api_key, net_id, port_id):
+net_str = "select network WAG - Stockholm"
+if len(net_str.split()) > 2:
+    index_len = len(net_str)
+    index_total = index_len + 1
+    network_name = ""
 
-    int_enabled = input('Select "true" to Enable the interface or "false" to Disable the interface: ')
-    int_access_policy = input('Select open to set an Open access policy or chose the desired policy: ')
-    int_vlan = input('Select the desired VLAN: ')
-
-    url = "https://api.meraki.com/api/v1/networks/L_743656888469554218/appliance/ports/3"
-
-    payload = {
-        "enabled": int_enabled,
-        "type": "access",
-        "vlan": int_vlan,
-        "accessPolicy": int_access_policy,
-    }
-
-    headers = {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "X-Cisco-Meraki-API-Key": api_key,
-    }
-
-    response = requests.request('PUT', url, headers=headers, data = json.dumps(payload))
-
-    if response.status_code == 200:
-        print("Interface configured successfully.")
-    else:
-        print("An erro occured, couldn't set the access port...")
-
-set_interface_access(api_key, net_id, port_id)
+    if len(net_str.split()) > 2:
+        for x in net_str.split()[2:index_len + 1]:
+            network_name += x
+            network_name += " "
+    network_name = network_name.rstrip()
+    print(network_name)

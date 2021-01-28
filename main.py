@@ -82,11 +82,15 @@ while 1:
                             elif network_name != "None" or network_name != "":
                                 print(help_selected_network())
                         
-                        elif t3_action == "select network":
-                            network_name = get_net_name(org_id(api_key), api_key)
-                            network_id = get_net_id(org_id(api_key), api_key, network_name)
-                            if network_name != "None":
-                                print(f'Network: <{network_name} with id: {network_id} has been selected.')
+
+                        elif "select network" in t3_action:
+                            try:
+                                network_name = get_net_name(org_id(api_key), api_key, t3_action)
+                                network_id = get_net_id(org_id(api_key), api_key, network_name)
+                                if network_name != "None":
+                                    print(f'Network: <{network_name} with id: {network_id} has been selected.')
+                            except:
+                                print("An error occured, make sure you spell the network name correct. it is case sensitive...")
 
 
                         ###* -------- Set/Del Commands -------- ####
@@ -188,12 +192,17 @@ while 1:
                                         elif t4_action == "select interface":
                                             interface = get_interface()
                                             while 1:
+                                                ##########################* MX INTERFACE CONFIGURATIONS ##########################
+
                                                 prompt_if_var = f'{mx_name}(config-if)#'
                                                 mx_int_compl = WordCompleter(mx_int_completer(), ignore_case=True)
                                                 mx_int_action = prompt(prompt_if_var, history=FileHistory('history.txt'), auto_suggest=AutoSuggestFromHistory(), completer=mx_int_compl, bottom_toolbar=con_toolbox(api_key), rprompt=r_prompt(network_name))
 
                                                 if mx_int_action == 'exit':
                                                     break
+
+                                                elif mx_int_action == 'help':
+                                                    pass
 
                                                 elif mx_int_action == "do show interface config":
                                                     show_mx_interface(api_key, network_id, interface)
