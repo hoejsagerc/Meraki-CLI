@@ -166,9 +166,9 @@ while 1:
                             else:
                                 show_network_mx(network_id, api_key, brief=True)
 
-                        elif t3_action == "select mx":
+                        elif "select mx" in t3_action:
                             if network_name != "None" and network_name != "":
-                                mx_name = get_mx_name(api_key, network_id)
+                                mx_name = get_mx_name(api_key, network_id, t3_action)
                                 mx_serial = get_mx_serial(api_key, network_id, mx_name)
 
                                 if mx_name != "None" and mx_name != "":
@@ -189,8 +189,8 @@ while 1:
                                         elif t4_action == "do show interfaces":
                                             show_all_mx_interfaces(api_key, network_id)
 
-                                        elif t4_action == "select interface":
-                                            interface = get_interface()
+                                        elif "select interface" in t4_action:
+                                            interface = get_interface(t4_action)
                                             while 1:
                                                 ##########################* MX INTERFACE CONFIGURATIONS ##########################
 

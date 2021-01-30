@@ -1807,3 +1807,150 @@
 
 # 2021-01-28 21:07:51.960654
 +exit
+
+# 2021-01-30 08:17:20.768833
++enable
+
+# 2021-01-30 08:27:16.545355
++config
+
+# 2021-01-30 08:27:21.234659
++show networks
+
+# 2021-01-30 08:27:32.285704
++do show networks brief
+
+# 2021-01-30 08:27:48.819481
++select network 756-BILLUND
+
+# 2021-01-30 08:27:54.624106
++exit
+
+# 2021-01-30 08:27:57.093889
++config
+
+# 2021-01-30 08:28:09.201513
++select network WAG - Stockholm
+
+# 2021-01-30 08:28:33.966496
++do show network mx
+
+# 2021-01-30 08:28:57.302432
++select mx WAG-SE-STO-GW-01
+
+# 2021-01-30 08:30:59.512361
++enable
+
+# 2021-01-30 08:31:11.652729
++config
+
+# 2021-01-30 08:31:16.495731
++select network WAG - Stockholm
+
+# 2021-01-30 08:31:30.690895
++select mx WAG-SE-STO-GW-01
+
+# 2021-01-30 08:32:18.164403
++enable
+
+# 2021-01-30 08:32:29.289928
++config
+
+# 2021-01-30 08:32:35.900904
++select network WAG - Stockholm
+
+# 2021-01-30 08:32:41.829780
++select mx WAG-SE-STO-GW-01
+
+# 2021-01-30 08:32:59.249997
++exit
+
+# 2021-01-30 08:33:04.377682
++do sho network brief
+
+# 2021-01-30 08:33:10.288538
++do show networks brief
+
+# 2021-01-30 08:33:25.535307
++select network 756-BILLUND
+
+# 2021-01-30 08:33:42.526027
++do show network mx
+
+# 2021-01-30 08:33:54.347222
++select mx 756-BILLUND-GW
+
+# 2021-01-30 08:34:00.866176
++?
+
+# 2021-01-30 08:39:07.387079
++enable
+
+# 2021-01-30 08:39:22.128905
++config
+
+# 2021-01-30 08:39:27.165160
++select network 756-BILLUND
+
+# 2021-01-30 08:39:36.994636
++do sho network mx brief
+
+# 2021-01-30 08:39:44.293770
++do show network mx brief
+
+# 2021-01-30 08:39:53.870265
++select mx 756-BILLUND-GW
+
+# 2021-01-30 08:40:01.079069
++do show interfaces
+
+# 2021-01-30 08:40:16.009652
++select interface 3
+
+# 2021-01-30 08:40:39.606662
++enable
+
+# 2021-01-30 08:40:48.126593
++config
+
+# 2021-01-30 08:40:51.803370
++select network 756-BILLUND
+
+# 2021-01-30 08:40:57.246355
++select mx 756-BILLUND-GW
+
+# 2021-01-30 08:41:02.828694
++select interface 3
+
+# 2021-01-30 08:41:14.003657
++?
+
+# 2021-01-30 08:41:22.225222
++show interface config
+
+# 2021-01-30 08:41:47.019212
++do sho interface config
+
+# 2021-01-30 08:42:04.663018
++do show interface config
+
+# 2021-01-30 08:42:15.766926
++select interface 4
+
+# 2021-01-30 08:42:22.080400
++do show interface config
+
+# 2021-01-30 08:42:36.897642
++exit
+
+# 2021-01-30 08:42:41.471984
++select interface 4
+
+# 2021-01-30 08:42:47.220181
++do show interface config
+
+# 2021-01-30 08:42:53.815807
++exit
+
+# 2021-01-30 08:42:59.398914
++do show interfaces

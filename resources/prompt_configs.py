@@ -95,11 +95,13 @@ def get_net_name(org_id, api_key, net_str):
     if len(net_str.split()) > 2:
         index_len = len(net_str)
         network_name = ""
-        if len(net_str.split()) > 2:
-            for x in net_str.split()[2:index_len + 1]:
-                network_name += x
-                network_name += " "
+#       if len(net_str.split()) > 2:
+        for x in net_str.split()[2:index_len + 1]:
+            network_name += x
+            network_name += " "
         network_name = network_name.rstrip()
+    else:
+        network_name = net_str.spli()[2]
     
     url = "https://api.meraki.com/api/v1/organizations/{}/networks".format(org_id)
 
@@ -158,9 +160,18 @@ def get_net_id(org_id, api_key, network_name):
             return net['id']
 
 
-def get_mx_name(api_key, net_id):
+def get_mx_name(api_key, net_id, mx_str):
 
-    mx_name = input("Enter the name of the MX: ")
+    mx = mx_str.split()
+    if len(mx_str.split()) > 2:
+        index_len = len(mx_str)
+        mx_name = ""
+        for x in mx_str.split()[2:index_len + 1]:
+            mx_name += x
+            mx_name += " "
+        mx_name = mx_name.rstrip()
+    else:
+        mx_name = mx_str.spli()[2]
 
     url = "https://api.meraki.com/api/v1/networks/{}/devices".format(net_id)
 
@@ -216,13 +227,24 @@ def get_mx_serial(api_key, net_id, mx_name):
         print("Couldn't find mx...")
 
 
-def get_interface():
+def get_interface(int_str):
     """Function for collecting the interface number
 
     Returns:
         Variable (String): [The String variable containing the port number]
     """
     
-    interface = str(input("Enter interface number: "))
+    #interface = str(input("Enter interface number: "))
+    interface = int_str.split()
+    if len(int_str.split()) > 2:
+        index_len = len(int_str)
+        interface = ""
+        for x in int_str.split()[2:index_len + 1]:
+            interface += x
+            interface += " "
+        interface = interface.rstrip()
+    else:
+        interface = int_str.spli()[2]
+
 
     return interface
