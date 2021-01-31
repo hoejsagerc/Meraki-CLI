@@ -7,7 +7,7 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import WordCompleter
 
-
+from resources.encrypter import *
 from resources.completers import *
 from resources.prompt_configs import *
 from resources.help_configs import *
@@ -36,12 +36,20 @@ while 1:
     t1_action = prompt('> ', history=FileHistory('history.txt'), auto_suggest=AutoSuggestFromHistory(), completer=t1_compl)
 
     if t1_action == "enable":
-        
+
         while 1:
             t2_compl = WordCompleter(tier2_completer())
 
             if api_key == "none":
-                api_key = prompt("Please enter your Meraki Dashboard API Key: ")
+                #api_key = prompt("Please enter your Meraki Dashboard API Key: ")
+                try:
+                    api_key = read_api_key('database.db')
+
+                    if api_key == None:
+                        break
+                except:
+                    print("An error occured, couldn't log you in...")
+                    break
             
             else:
                 ##########################* USER ENABLED MODE ##########################
@@ -219,6 +227,10 @@ while 1:
                             else:
                                 print("No network has been selected.")
 
+    elif t1_action == "new user":
+        create_connection('database.db')
+        create_table('database.db')
+        create_user('database.db')
 
     elif t1_action == "help" or t1_action == "?":
         print(f"{help_user_exec()}")
