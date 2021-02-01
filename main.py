@@ -34,6 +34,7 @@ while 1:
     #### USER EXEC MODE ####
     t1_compl = WordCompleter(tier1_completer(), ignore_case=True)
     t1_action = prompt('> ', history=FileHistory('history.txt'), auto_suggest=AutoSuggestFromHistory(), completer=t1_compl)
+    
 
     if t1_action == "enable":
 
@@ -231,10 +232,13 @@ while 1:
         create_connection('database.db')
         create_table('database.db')
         create_user('database.db')
+        clear()
+        print(f"{Fore.CYAN}{menu_welcome()}{st.RESET_ALL}")
 
     elif t1_action == "help" or t1_action == "?":
         print(f"{help_user_exec()}")
     
     elif t1_action == "exit":
         break
+
 
