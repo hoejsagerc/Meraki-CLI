@@ -65,23 +65,14 @@ def help_user_exec():
 
 def help_user_enabled():
     return """
-    MODE: User Enabled
-
-    Descriotion:
-        In this mode you will be able to see different information regarding
-        you Meraki Organisaition such as Networks, and Devices inside these Networks.
-
-    Commands:
-        
-        - <help / ?> show the help page for the 'User Enabled' Menu.
-
-        - <config> enters the 'Global Configurations' mode.
-
-        - <show networks brief> display a short list with the names and id's of
-            all networks belonging to your organisation.
-        
-        - <how networks> display a verbose list of all the networks in the organisation.
-
+        HELP:
+        -----------------------------------------------------------------
+        <help>............................Shows the help menu
+        <?>...............................Shows the help menu
+        <exit>............................Exit to last menu
+        <config>..........................Switch to global config menu
+        <show networks>...................Show verbose networks
+        <show networks brief>.............Show exact info on networks
 
     """
 
