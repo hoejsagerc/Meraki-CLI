@@ -65,111 +65,50 @@ def help_user_exec():
 
 def help_user_enabled():
     return """
-        HELP:
-        -----------------------------------------------------------------
-        <help>............................Shows the help menu
-        <?>...............................Shows the help menu
-        <exit>............................Exit to last menu
-        <config>..........................Switch to global config menu
-        <show networks>...................Show verbose networks
-        <show networks brief>.............Show exact info on networks
+
+HELP:
+__________________________________________________________________
+help / ?.................................Shows the help menu
+exit.....................................Exit to last menu
+config terminal..........................Switch to global config menu
+show networks............................Show verbose networks
+show networks brief......................Show exact info on networks
 
     """
 
 
 def help_global_config():
     return """
-    MODE: Global Configuration
 
-    Description:
-        In this mode you will be able to do configurations to the network
-        and organisation. You can use <select> to enter a network and set
-        configurations to the desired network.
-        You will be able to see which network you are working on by the prompt
-        displayed in the right side.
-        If the prompt in the right side displayes "None" this means you are editing
-        at organisational level.
+HELP:
+__________________________________________________________________
+help / ?.................................Shows the help menu
+exit.....................................Exit to last menu
+<select network [network_name]>..........Selects the specified network
+<show networks>..........................Displays verbose info on networks
+<show networks brief>....................Displays info on networks
+<set new network>........................Create new network
+<delete network>.........................Deletes network
+<set new network device>.................Adds a new device to network
+<delete network device>..................Removes a device from a network
+<set device name>........................Renames a device
 
-    Commands:
-
-        - <help / ?> show the help page for the 'Global Config' Menu.
-
-        CONFIGURATION COMMANDS:
-
-        - <set new network> displayed an input menu guideing you through creating 
-            a new network. for creating a new network you will be prompted to:
-                
-                * Network Name: Provivide the desired network name. Example: 
-                    Test_Network01
-
-                * TimeZone: Provide the timezone for where the network should be 
-                    located. To find the available timezone 
-                    see: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-                    an example could be: Europe/Copenhagen
-                
-                * Product Types: the product types defines the kind of network and 
-                    is important do define depending on what kind of equipment you 
-                    want to add to the network. The product types should be 
-                    seperated by a comma and a space. 
-                    An example: appliance, switch, wireless
-
-                    product types: 'wireless', 'wireless', 'switch', 'systemsManager', 
-                        'camera', 'cellularGateway', 'environmental'
-
-        - <select network> enter the name of the network you want to chose. this 
-            command is case/space sensitive. Once you have entered a network all
-            following commands will be done in regards to this network. To exit
-            a network, you will need to exit the Global Config Mode.
-
-
-        SHOW COMMANDS:
-
-        - <do show networks> display a verbose list of all the networks in 
-            the organisation.
-
-        - <do show networks brief> display a short list with the names 
-            and id's of all networks belonging to your organisation.
-            
     """
 
 
 def help_selected_network():
     return """
-    MODE: Selected Network
 
-    Description:
-        In this mode you will be able to do different configuraions
-        depending ont the specified network you have selected.
+HELP:
+__________________________________________________________________
+help / ?.................................Shows the help menu
+exit.....................................Exit to last menu
+show network switches....................Show verbose switches in network
+show network switches brief..............Shows switches in network
+show network ap..........................Show verbose AP's in network
+show network ap brief....................Show AP's in network
+show network mx..........................Show verbose MX's in network
+show network mx brief....................Show MX's in network
+delete network...........................Deletes network
 
-    Commands:
-        - <help / ?> Show the help page for the selected networks menu
-
-        CONFIGURATION COMMANDS:
-
-        - <delete network> to be able to perform this command, you must have already
-            selected the specified network you want to delete. When you enter the
-            command delete network, you will be prompted if your are sure you want
-            to delete the network. If you press 'y' the network will be deleted.
-            If you press 'n' you will cancel the process.
-
-        
-        SHOW COMMANDS:
-
-        - <do show network switches> Displays information about all switches
-            in the selected network.
-        
-        - <do show network switches brief> Displays brief information about
-            all siwtches in the selected network.
-        
-        - <do show network ap> Displays information about all Access Points
-            in the selected network
-        
-        - <do show network ap brief> Displays information about all Access Points
-            in the selected network
-
-        - <do show network mx> Displays information about all MX Gateways in the
-            selected network
-        
-        - <do show network mx brief> Displays brief information about all MX
-            Gateways in the selected network.
     """
