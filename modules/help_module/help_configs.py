@@ -1,7 +1,7 @@
 """
     NAME
         prompt_configs.py
-    CREATED
+    CREATED     
         23.01.2021
     DESCRIPTION
         This file contains the varios functions for displaying

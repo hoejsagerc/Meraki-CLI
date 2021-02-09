@@ -7,19 +7,7 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import WordCompleter
 
-from resources.encrypter import *
-from resources.completers import *
-from resources.prompt_configs import *
-from resources.help_configs import *
-from resources.show_commands.show_network import *
-from resources.show_commands.show_devices import *
-from resources.show_commands.show_device_configs import *
-from resources.config_commands.config_networks import *
-from resources.config_commands.add_remove_devices import *
-from resources.config_commands.config_devices import *
-from resources.config_commands.config_device_interfaces import *
-
-
+from modules import *
 
 
 clear = lambda: os.system('clear')
@@ -28,6 +16,7 @@ api_key = "none"
 network_name = "none"
 
 clear()
+delete_history_file()
 print(f"{Fore.CYAN}{menu_welcome()}{st.RESET_ALL}")
 
 while 1:

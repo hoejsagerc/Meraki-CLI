@@ -12,11 +12,12 @@
 
 import json
 import requests
+import os
 from prompt_toolkit.formatted_text import HTML
 from prompt_toolkit.styles import Style
 
 
-__all__ = ['con_toolbox', 'r_prompt', 'menu_welcome', 'rprompt_style', 'get_net_name', 'get_net_id', 'get_mx_name', 'get_mx_serial', 'get_interface']
+__all__ = ['con_toolbox', 'r_prompt', 'menu_welcome', 'rprompt_style', 'get_net_name', 'get_net_id', 'get_mx_name', 'get_mx_serial', 'get_interface', 'delete_history_file']
 
 
 #TODO - Working on ...........................
@@ -248,3 +249,10 @@ def get_interface(int_str):
 
 
     return interface
+
+
+def delete_history_file():
+    if os.path.exists("history.txt"):
+        os.remove("history.txt")
+    else:
+        return "The file cannot be found..."

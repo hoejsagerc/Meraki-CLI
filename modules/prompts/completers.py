@@ -14,16 +14,15 @@ __all__ = ['tier1_completer', 'tier2_completer', 'tier3_completer', 'tier4_compl
 
 # User Exec Mode
 def tier1_completer():
-    return ['enable', 'exit', 'help', 'new user']
+    return ['enable', 'exit', 'help', 'new user', 'new', 'user']
 
 # User Enabled Mode
 def tier2_completer():
-    return ['exit', 'help','show networks brief', 'show networks', 'config terminal', ]
+    return ['exit', 'help', 'show', 'networks', 'config', 'terminal', 'brief', 'show networks brief', 'show networks', 'config terminal', ]
 
 # Global Config Mode
 def tier3_completer():
-    return ['exit', 
-        'help',
+    return [
         'select network',
         'set new network',
         'delete network',
@@ -36,7 +35,19 @@ def tier3_completer():
         'show network ap brief',
         'show network mx',
         'show network mx brief',
-        'select mx'
+        'select mx',
+        'exit', 
+        'help',
+        'select',
+        'new',
+        'network',
+        'delete',
+        'device',
+        'name',
+        'switches',
+        'ap',
+        'mx',
+        'brief'
     ]
 
 
@@ -46,6 +57,9 @@ def tier4_completer():
         'help',
         'show interfaces',
         'select interfaces'
+        'show',
+        'select',
+        'interfaces'
     ]
 
 def mx_int_completer():
@@ -54,4 +68,10 @@ def mx_int_completer():
         'show interface config',
         'set interface trunk',
         'set interface access'
+        'show',
+        'set',
+        'interface',
+        'config',
+        'trunk',
+        'access'
     ]

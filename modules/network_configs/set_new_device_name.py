@@ -1,14 +1,3 @@
-"""
-    NAME
-        config_devices.py
-    CREATED
-        24.01.2021
-    DESCRIPTION
-        This file contains functions for configuring devices
-    UPDATED
-        24.01.2021
-"""
-
 import json
 import requests
 

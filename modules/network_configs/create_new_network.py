@@ -1,20 +1,8 @@
-"""
-    NAME
-        show_network.py
-    CREATED
-        23.01.2021
-    DESCRIPTION
-        This file is for managin all API Calls for 
-        Meraki v1 API. This file wil handle all configure commands related to
-        networks in the Meraki Dashboard.
-    UPDATED
-        23.01.2021
-"""
-
 import json
 import requests
 
-__all__ = ['set_new_net', 'del_network']
+
+__all__ = ['set_new_net']
 
 def set_new_net(org_id, api_key):
     """Function for creating a new network in the meraki organisation
@@ -54,38 +42,4 @@ def set_new_net(org_id, api_key):
         print("An error occured couldn't create the network...")
     
     return response.status_code
-
-
-def del_network(net_id, net_name, api_key):
-    """Function to delete a network from an organisation.
-
-    Args:
-        net_id ([String]): [Network ID]
-        net_name ([String]): [Network Name]
-        api_key ([String]): [The user provided API Key]
-    """
-
-    url = "https://api.meraki.com/api/v1/networks/{}".format(net_id)
-
-    payload = None
-
-    headers = {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "X-Cisco-Meraki-API-Key": api_key
-    }
-
-    answer = input(f"Your are about to delete network: {net_name} - {net_id}. Press (y/n) to proceed or cancel: ")
-    if answer.lower() == "y" or answer.lower() == "yes":
-        try:
-            response = requests.request('DELETE', url, headers=headers, data = payload)
-            print(response.text.encode('utf8'))
-            if response.status_code == 204:
-                print(f"Network {net_name} was successfully deleted")
-            else:
-                print("An error occured. Couldn't delete the network...")
-        except:
-            print("An error occured. Couldn't delete the network...")
-
-
 
