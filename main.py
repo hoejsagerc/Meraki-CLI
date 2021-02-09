@@ -31,7 +31,6 @@ while 1:
             t2_compl = WordCompleter(tier2_completer())
 
             if api_key == "none":
-                #api_key = prompt("Please enter your Meraki Dashboard API Key: ")
                 try:
                     api_key = read_api_key('database.db')
 

@@ -131,3 +131,5 @@ dmypy.json
 
 # Specific Files
 secret.txt
+history.txt
+.vscode/
