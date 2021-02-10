@@ -239,9 +239,7 @@ def show_mx_interfaces(api_key, net_id):
 
 
 
-#api_key = "6bec40cf957de430a6f1f2baa056b99a4fac9ea0"
-api_key = "c8f989abf579c4f0e39a8115159fa9a6100066cd"
-org_id = find_orgid(api_key) 
+
 
 
 def show_net_status(api_key, org_id):
@@ -346,5 +344,41 @@ def show_specific_network_status(org_id, api_key, net_str):
         print("Couldn't retrieve information! Check if you are online...")
 
 
+command = "select interface range 3-6"
 
-show_specific_network_status(org_id, api_key, net_str)
+def select_interface_range(command):
+
+    split = (command.split()[3].split('-'))
+
+    num1 = int(split[0]) 
+    num2 = int(split[1])
+    range_list = list(range(num1, num2))
+    range_list.append(num2)
+    print(range_list)
+
+    return range_list
+
+
+api_key = "c8f989abf579c4f0e39a8115159fa9a6100066cd"
+org_id = find_orgid(api_key)
+net_id = "L_743656888469554260"
+
+def test_mx_conn(api_key, net_id):
+
+    url = "https://api.meraki.com/api/v1/networks/{}/appliance/connectivityMonitoringDestinations".format(net_id)
+
+    payload = None
+
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-Cisco-Meraki-API-Key": api_key
+    }
+
+    response = requests.request('GET', url, headers=headers, data = payload)
+
+    print("Connectivity test to: " + response.json()['destinations'][0]['ip'] + " completed successfully!")
+
+
+
+test_mx_conn(api_key, net_id)

@@ -17,7 +17,7 @@ from prompt_toolkit.formatted_text import HTML
 from prompt_toolkit.styles import Style
 
 
-__all__ = ['con_toolbox', 'r_prompt', 'menu_welcome', 'rprompt_style', 'get_net_name', 'get_net_id', 'get_mx_name', 'get_mx_serial', 'get_interface', 'delete_history_file']
+__all__ = ['con_toolbox', 'r_prompt', 'menu_welcome', 'rprompt_style', 'get_net_name', 'get_net_id', 'get_mx_name', 'get_mx_serial', 'get_interface', 'delete_history_file', 'select_interface_range']
 
 
 #TODO - Working on ...........................
@@ -249,6 +249,22 @@ def get_interface(int_str):
 
 
     return interface
+
+
+def select_interface_range(command):
+
+    split = (command.split()[3].split('-'))
+
+    num1 = int(split[0]) 
+    num2 = int(split[1])
+    range_list = list(range(num1, num2))
+    range_list.append(num2)
+    print(range_list)
+
+    return range_list
+
+
+
 
 
 def delete_history_file():

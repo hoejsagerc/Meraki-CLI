@@ -15,4 +15,6 @@ __all__ = ['con_toolbox',
 'tier3_completer', 
 'tier4_completer', 
 'mx_int_completer', 
-'delete_history_file']
+'delete_history_file',
+'select_interface_range',
+'mx_int_range_completer']

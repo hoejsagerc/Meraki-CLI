@@ -10,7 +10,7 @@
         23.01.2021
 """
 
-__all__ = ['help_user_exec', 'help_user_enabled', 'help_global_config', 'help_selected_network']
+__all__ = ['help_user_exec', 'help_user_enabled', 'help_global_config', 'help_selected_network', 'mx_interface_range_help']
 
 
 def help_user_exec():
@@ -86,14 +86,13 @@ HELP:
 __________________________________________________________________
 help / ?.................................Shows the help menu
 exit.....................................Exit to last menu
-<select network [network_name]>..........Selects the specified network
-<show networks>..........................Displays verbose info on networks
-<show networks brief>....................Displays info on networks
-<set new network>........................Create new network
-<delete network>.........................Deletes network
-<set new network device>.................Adds a new device to network
-<delete network device>..................Removes a device from a network
-<set device name>........................Renames a device
+select network [network_name]............Selects the specified network
+show networks............................Displays verbose info on networks
+show networks brief......................Displays info on networks
+add new network..........................Create new network
+delete network...........................Deletes network
+show all network status..................Shows status on all networks
+show network status [network_name].......Shows status on specific network
 
     """
 
@@ -105,6 +104,8 @@ HELP:
 __________________________________________________________________
 help / ?.................................Shows the help menu
 exit.....................................Exit to last menu
+add new network device...................Adds a device to the network
+delete network device....................Removes a device from the network
 show network switches....................Show verbose switches in network
 show network switches brief..............Shows switches in network
 show network ap..........................Show verbose AP's in network
@@ -112,5 +113,19 @@ show network ap brief....................Show AP's in network
 show network mx..........................Show verbose MX's in network
 show network mx brief....................Show MX's in network
 delete network...........................Deletes network
+set device name..........................Renames a device
+test network connection..................Tests if network is online
+
+    """
+
+
+def mx_interface_range_help():
+    return """
+HELP:
+__________________________________________________________________
+help / ?.................................Shows the help menu
+exit.....................................Exit to last menu
+set interface access.....................Configure the range as access ports
+set interface trunk......................Configure the range as trunk ports
 
     """

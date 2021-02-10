@@ -29,4 +29,8 @@ def show_all_mx_interfaces(api_key, net_id):
         number = str(port['number'])
         enabled = port['enabled']
         port_type = port['type']
-        print(f'Port: {number}      Enabled: {enabled}      Type: {port_type}')
+
+        if int(number) < 10:
+            print(f'Port: {number}      Enabled: {enabled}      Type: {port_type}')
+        else:
+            print(f'Port: {number}     Enabled: {enabled}      Type: {port_type}')

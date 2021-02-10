@@ -7,13 +7,14 @@ from modules.mx_appliance import *
 from modules.network_info import *
 
 __all__ = [
-# modules/help_module
+#! modules/help_module
 'help_user_exec', 
 'help_user_enabled', 
 'help_global_config', 
 'help_selected_network',
+'mx_interface_range_help',
 
-# modules/prompts
+#! modules/prompts
 'con_toolbox', 
 'r_prompt', 
 'menu_welcome', 
@@ -29,27 +30,32 @@ __all__ = [
 'tier4_completer', 
 'mx_int_completer',
 'delete_history_file',
+'select_interface_range',
+'mx_int_range_completer',
 
-# modules/user_creation
+#! modules/user_creation
 'create_connection', 
 'create_table', 
 'create_user', 
 'read_api_key',
 
-# modules/network_configs
+#! modules/network_configs
 'add_device_to_network', 
 'set_new_net', 
 'del_network', 
 'remove_network_device', 
 'set_device_name',
 
-# modules/mx_appliance
+#! modules/mx_appliance
 'set_interface_access', 
 'set_interface_trunk', 
 'show_all_mx_interfaces', 
 'show_mx_interface',
+'set_int_range_access',
+'set_int_range_trunk',
+'test_mx_conn',
 
-# modules/network_info
+#! modules/network_info
 'show_net', 
 'show_net_brf', 
 'org_id', 

@@ -97,7 +97,7 @@ while 1:
 
 
                         ###* -------- Set/Del Commands -------- ####
-                        elif t3_action == "set new network" or "set new net" in t3_action:
+                        elif t3_action == "add new network":
                             set_new_net(org_id(api_key), api_key)
                         
                         elif t3_action == "delete network" or "del net" in t3_action:
@@ -106,7 +106,7 @@ while 1:
                             else:
                                 del_network(network_id, network_name, api_key)
 
-                        elif t3_action == "set new network device" or "set new net dev" in t3_action:
+                        elif t3_action == "add new network device":
                             if network_id == "None":
                                 print("No network has been selected...")
                             else:
@@ -118,7 +118,7 @@ while 1:
                             else:
                                 remove_network_device(network_id, api_key)
                         
-                        elif t3_action == "set device name" or "sret dev nam" in t3_action:
+                        elif t3_action == "set device name" or "set dev nam" in t3_action:
                             if network_id == "None":
                                 print("No network has been selected...")
                             else:
@@ -169,6 +169,18 @@ while 1:
                                 print("No network has been selected...")
                             else:
                                 show_network_mx(network_id, api_key, brief=True)
+                        
+                        elif t3_action == "show all network status" or "sho net stat all" in t3_action:
+                            show_net_status(org_id(api_key), api_key)
+                        
+                        elif "show network status" in t3_action:
+                            show_specific_network_status(org_id(api_key), api_key, t3_action)
+
+                        elif "test network connection" in t3_action:
+                            if network_id == "None":
+                                print("No network has been selected...")
+                            else:
+                                test_mx_conn(api_key, network_id)
 
                         elif "select mx" in t3_action or "sel mx" in t3_action:
                             if network_name != "None" and network_name != "":
@@ -193,7 +205,30 @@ while 1:
                                         elif t4_action == "show interfaces" or "sho int" in t4_action:
                                             show_all_mx_interfaces(api_key, network_id)
 
-                                        elif "select interface" in t4_action or "sel int" in t4_action:
+
+                                        elif "select interface range" in t4_action:
+                                            interface_range = select_interface_range(t4_action)
+                                            while 1:
+                                                ##########################* MX INTERFACE RANGE CONFIGURATIONS ##########################
+
+                                                prompt_if_range_var = f'{mx_name}(config-if-range)#'
+                                                mx_int_range_compl = WordCompleter(mx_int_range_completer(), ignore_case=True)
+                                                mx_int_range_action = prompt(prompt_if_range_var, history=FileHistory('history.txt'), auto_suggest=AutoSuggestFromHistory(), completer=mx_int_range_compl, bottom_toolbar=con_toolbox(api_key), rprompt=r_prompt(network_name))
+
+                                                if mx_int_range_action == "exit" or "ex" in mx_int_range_action:
+                                                    break
+
+                                                elif mx_int_range_action == "help" or mx_int_range_action == "?":
+                                                    mx_interface_range_help()
+
+                                                elif mx_int_range_action == "set interface access":
+                                                    set_int_range_access(api_key, network_id, interface_range)
+
+                                                elif mx_int_range_action == "set interface trunk":
+                                                    set_int_range_trunk(api_key, network_id, interface_range)
+
+
+                                        elif "select interface" in t4_action:
                                             interface = get_interface(t4_action)
                                             while 1:
                                                 ##########################* MX INTERFACE CONFIGURATIONS ##########################
