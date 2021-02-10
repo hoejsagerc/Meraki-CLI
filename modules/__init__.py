@@ -55,5 +55,7 @@ __all__ = [
 'org_id', 
 'show_network_aps', 
 'show_network_mx', 
-'show_network_switches'
+'show_network_switches',
+'show_net_status',
+'show_specific_network_status'
 ]

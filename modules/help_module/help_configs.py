@@ -73,6 +73,8 @@ exit.....................................Exit to last menu
 config terminal..........................Switch to global config menu
 show networks............................Show verbose networks
 show networks brief......................Show exact info on networks
+show all network status..................Shows status on all networks
+show network status [network_name].......Shows status on specific network
 
     """
 

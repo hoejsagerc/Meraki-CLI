@@ -60,8 +60,14 @@ while 1:
                 elif t2_action == "show networks brief" or "sho net br" in t2_action:
                     show_net_brf(org_id(api_key), api_key)
                 
-                elif t2_action == "show networks" or "sho net" in t2_action:
+                elif t2_action == "show networks":
                     show_net(org_id(api_key), api_key)
+                
+                elif t2_action == "show all network status" or "sho net stat all" in t2_action:
+                    show_net_status(org_id(api_key), api_key)
+                
+                elif "show network status" in t2_action:
+                    show_specific_network_status(org_id(api_key), api_key, t2_action)
                 
                 elif t2_action == "config terminal" or "conf t" in t2_action:
 

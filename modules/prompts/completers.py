@@ -18,7 +18,19 @@ def tier1_completer():
 
 # User Enabled Mode
 def tier2_completer():
-    return ['exit', 'help', 'show', 'networks', 'config', 'terminal', 'brief', 'show networks brief', 'show networks', 'config terminal', ]
+    return ['exit', 
+    'help',
+    'show networks brief', 
+    'show networks', 
+    'config terminal', 
+    'show all network status', 
+    'show network status',
+    'show',
+    'networks',
+    'network',
+    'config',
+    'terminal',
+    'brief']
 
 # Global Config Mode
 def tier3_completer():

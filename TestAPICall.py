@@ -234,15 +234,117 @@ def show_mx_interfaces(api_key, net_id):
 
 
 
-net_str = "select network WAG - Stockholm"
-if len(net_str.split()) > 2:
-    index_len = len(net_str)
-    index_total = index_len + 1
-    network_name = ""
 
-    if len(net_str.split()) > 2:
-        for x in net_str.split()[2:index_len + 1]:
+
+
+
+
+#api_key = "6bec40cf957de430a6f1f2baa056b99a4fac9ea0"
+api_key = "c8f989abf579c4f0e39a8115159fa9a6100066cd"
+org_id = find_orgid(api_key) 
+
+
+def show_net_status(api_key, org_id):
+
+
+    url = "https://api.meraki.com/api/v1/organizations/{}/appliance/uplink/statuses".format(org_id)
+    net_name_url = "https://api.meraki.com/api/v1/organizations/{}/networks".format(org_id)
+
+    payload = None
+
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-Cisco-Meraki-API-Key": api_key
+    }
+
+    response = requests.request('GET', url, headers=headers, data = payload)
+    net_name_response = requests.request('GET', net_name_url, headers=headers, data = payload)
+
+    #print(response.status_code)
+    #print(json.dumps(response.json(), indent=4, sort_keys=True))
+    #print(net_name_response.status_code)
+    #print(json.dumps(net_name_response.json(), indent=4, sort_keys=True))
+
+
+    try:
+        for resp in response.json():
+            for net in net_name_response.json():
+
+                if resp['networkId'] == net['id']:
+                    print(f'Network: ' + net['name'])
+                    print(f'Last Uplink Report: ' + resp['lastReportedAt'])
+                    i = 1
+                    for uplink in resp['uplinks']:
+                        print(f'Uplink: {i}')
+                        print(f'Status: ' + uplink['status'])
+                        print(f'Interface: ' + uplink['interface'])
+                        print(f'Public IP: ' +  uplink['ip'])
+                        i += 1
+
+                    print("")
+                    print("")
+
+
+    except:
+        print("Couldn't retrieve information! Check if you are online...")
+
+
+
+net_str = "show network status Azure"
+
+def show_specific_network_status(org_id, api_key, net_str):
+
+    print(net_str.split())
+    network = net_str.split()
+    if len(net_str.split()) > 3:
+        index_len = len(net_str)
+        network_name = ""
+#       if len(net_str.split()) > 2:
+        for x in net_str.split()[3:index_len + 1]:
             network_name += x
             network_name += " "
-    network_name = network_name.rstrip()
+        network_name = network_name.rstrip()
+    else:
+        network_name = net_str.spli()[3]
+    
     print(network_name)
+    
+
+    url = "https://api.meraki.com/api/v1/organizations/{}/appliance/uplink/statuses".format(org_id)
+    net_name_url = "https://api.meraki.com/api/v1/organizations/{}/networks".format(org_id)
+
+    payload = None
+
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-Cisco-Meraki-API-Key": api_key
+    }
+
+    response = requests.request('GET', url, headers=headers, data = payload)
+    net_name_response = requests.request('GET', net_name_url, headers=headers, data = payload)
+
+
+    try:
+        for net in net_name_response.json():
+            if net['name'] == network_name:
+                network_id = net['id']
+
+        for resp in response.json():
+            if resp['networkId'] == network_id:
+                print(f'Network: {network_name}')
+                print(f'Last Uplink Report: ' + resp['lastReportedAt'])
+                i = 1
+                for uplink in resp['uplinks']:
+                    print(f'Uplink: {i}')
+                    print(f'Status: ' + uplink['status'])
+                    print(f'Interface: ' + uplink['interface'])
+                    print(f'Public IP: ' +  str(uplink['ip']))
+                    i += 1
+    except:
+        print("Couldn't retrieve information! Check if you are online...")
+
+
+
+show_specific_network_status(org_id, api_key, net_str)
