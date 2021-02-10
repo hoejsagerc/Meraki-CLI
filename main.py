@@ -182,6 +182,12 @@ while 1:
                             else:
                                 test_mx_conn(api_key, network_id)
 
+                        elif "ping" in t3_action:
+                            if network_id == "None":
+                                print("No network has been selected...")
+                            else:
+                                ping_tool(api_key, network_id, t3_action)
+
                         elif "select mx" in t3_action or "sel mx" in t3_action:
                             if network_name != "None" and network_name != "":
                                 mx_name = get_mx_name(api_key, network_id, t3_action)

@@ -69,11 +69,11 @@ def menu_welcome():
     
 
     Name        ; Meraki CLI
-    Version     : 0.0.1
+    Version     : 0.41.1
     Homepage    : https://hoejsager.com/meraki_cli
     GitHub      : https://github.com/hoejsagerc/Meraki-CLI/
 
-    Total Commands: 4
+    Total Commands: 26
 
     """
 

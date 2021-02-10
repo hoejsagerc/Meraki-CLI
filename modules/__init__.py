@@ -63,5 +63,6 @@ __all__ = [
 'show_network_mx', 
 'show_network_switches',
 'show_net_status',
-'show_specific_network_status'
+'show_specific_network_status',
+'ping_tool'
 ]
