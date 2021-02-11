@@ -13,6 +13,7 @@ __all__ = [
 'help_global_config', 
 'help_selected_network',
 'mx_interface_range_help',
+'help_selected_mx',
 
 #! modules/prompts
 'con_toolbox', 
@@ -54,6 +55,11 @@ __all__ = [
 'set_int_range_access',
 'set_int_range_trunk',
 'test_mx_conn',
+'create_new_vlan',
+'show_vlans',
+'show_vlans_brief',
+'update_vlans',
+'delete_vlan',
 
 #! modules/network_info
 'show_net', 

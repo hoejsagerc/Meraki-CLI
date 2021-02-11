@@ -127,13 +127,6 @@ while 1:
                         
 
                         ###* ------- Do Show Commands ------- ###
-                        # not used because of conflict with with other commands in t3_actions
-                        #elif t3_action == "show networks brief" or "sho net br" in t3_action:
-                        #    show_net_brf(org_id(api_key), api_key)
-                        
-                        #elif t3_action == "show networks" or "sho net" in t3_action:
-                        #    show_net(org_id(api_key), api_key)
-                        
                         elif t3_action == "show network switches" or "sho net sw" in t3_action:
                             if network_id == "None":
                                 print("No network has been selected...")
@@ -206,10 +199,25 @@ while 1:
                                             break
 
                                         elif t4_action == "help" or t4_action == "?":
-                                            pass
+                                            print(help_selected_mx())
 
                                         elif t4_action == "show interfaces" or "sho int" in t4_action:
                                             show_all_mx_interfaces(api_key, network_id)
+
+                                        elif t4_action == "set new vlan":
+                                            create_new_vlan(api_key, network_id)
+
+                                        elif t4_action == "show vlans":
+                                            show_vlans(api_key, network_id)
+
+                                        elif t4_action == "show vlans brief":
+                                            show_vlans_brief(api_key, network_id)
+
+                                        elif "update vlan" in t4_action:
+                                            update_vlans(api_key, network_id, t4_action)
+
+                                        elif "delete vlan" in t4_action:
+                                            delete_vlan(api_key, network_id, t4_action)
 
 
                                         elif "select interface range" in t4_action:

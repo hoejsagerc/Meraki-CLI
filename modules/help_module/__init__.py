@@ -4,4 +4,5 @@ __all__ = ['help_user_exec',
 'help_user_enabled', 
 'help_global_config', 
 'help_selected_network',
-'mx_interface_range_help']
+'mx_interface_range_help',
+'help_selected_mx']
