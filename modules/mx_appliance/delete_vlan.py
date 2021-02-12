@@ -1,7 +1,7 @@
 import json
 import requests
 
-__all__ = ['delete_vlan']
+__all__ = ['delete_vlan', 'format_input']
 
 
 def format_input(usr_input):
