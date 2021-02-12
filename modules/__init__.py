@@ -54,7 +54,7 @@ __all__ = [
 'show_mx_interface',
 'set_int_range_access',
 'set_int_range_trunk',
-'test_mx_conn',
+'mx_conn',
 'create_new_vlan',
 'show_vlans',
 'show_vlans_brief',

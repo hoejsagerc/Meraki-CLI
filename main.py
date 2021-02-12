@@ -173,7 +173,7 @@ while 1:
                             if network_id == "None":
                                 print("No network has been selected...")
                             else:
-                                test_mx_conn(api_key, network_id)
+                                mx_conn(api_key, network_id)
 
                         elif "ping" in t3_action:
                             if network_id == "None":
