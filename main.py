@@ -219,6 +219,9 @@ while 1:
                                         elif "delete vlan" in t4_action:
                                             delete_vlan(api_key, network_id, t4_action)
 
+                                        elif "set dhcp vlan" in t4_action:
+                                            update_dhcp(api_key, network_id, t4_action)
+
 
                                         elif "select interface range" in t4_action:
                                             interface_range = select_interface_range(t4_action)

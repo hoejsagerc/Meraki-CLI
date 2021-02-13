@@ -7,6 +7,7 @@ from modules.mx_appliance.create_new_vlan import *
 from modules.mx_appliance.show_vlans import *
 from modules.mx_appliance.update_vlans import *
 from modules.mx_appliance.delete_vlan import *
+from modules.mx_appliance.set_subnet_dhcp import update_dhcp
 
 __all__ = ['set_interface_access', 
 'set_interface_trunk', 
@@ -19,6 +20,7 @@ __all__ = ['set_interface_access',
 'show_vlans',
 'show_vlans_brief',
 'update_vlans',
-'delete_vlan']
+'delete_vlan',
+'update_dhcp']
 
 
