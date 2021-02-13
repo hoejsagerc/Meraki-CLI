@@ -39,4 +39,4 @@ class TestSetSubnetDHCP:
 
 
     def test_retrieve_configured_vlan(self):
-        assert retrive_configured_vlan(API_KEY, NET_ID, '501') == 200
+        assert retrive_configured_vlan("test", "test", "501") == None
