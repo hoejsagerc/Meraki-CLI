@@ -60,6 +60,7 @@ __all__ = [
 'show_vlans_brief',
 'update_vlans',
 'delete_vlan',
+'update_dhcp',
 
 #! modules/network_info
 'show_net', 

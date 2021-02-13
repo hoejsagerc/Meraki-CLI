@@ -1,5 +1,5 @@
 import pytest
-from modules.mx_appliance.delete_vlan import *
+from modules.mx_appliance.delete_vlan import format_input
 
 
 def test_format_input():
