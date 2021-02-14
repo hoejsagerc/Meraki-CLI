@@ -71,10 +71,23 @@ def tier4_completer():
     return ['exit',
         'help',
         'show interfaces',
-        'select interfaces'
+        'select interfaces',
+        'set dhcp vlan',
+        'show dhcp vlan',
+        'set firewall rule',
+        'show firewall rules',
+        'show firewall block rules',
+        'show firewall allow rules',
+        'delete firewall rule'
         'show',
         'select',
-        'interfaces'
+        'interfaces',
+        'firewall',
+        'rule',
+        'rules',
+        'block',
+        'allow',
+        'delete'
     ]
 
 def mx_int_completer():

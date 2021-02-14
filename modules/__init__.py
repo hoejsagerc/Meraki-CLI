@@ -61,6 +61,12 @@ __all__ = [
 'update_vlans',
 'delete_vlan',
 'update_dhcp',
+'show_subnet_dhcp',
+'set_l3_firewall_rule',
+'show_l3_firewall_rules',
+'show_l3_firewall_block_rules',
+'show_l3_firewall_allow_rules',
+'remove_l3_firewall_rule',
 
 #! modules/network_info
 'show_net', 

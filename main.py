@@ -222,6 +222,24 @@ while 1:
                                         elif "set dhcp vlan" in t4_action:
                                             update_dhcp(api_key, network_id, t4_action)
 
+                                        elif "show dhcp vlan" in t4_action:
+                                            show_subnet_dhcp(api_key, network_id, t4_action)
+                                        
+                                        elif "set firewall rule" in t4_action:
+                                            set_l3_firewall_rule(api_key, network_id)
+
+                                        elif "show firewall rules" in t4_action:
+                                            show_l3_firewall_rules(api_key, network_id)
+
+                                        elif "show firewall block rules" in t4_action:
+                                            show_l3_firewall_block_rules(api_key, network_id)
+
+                                        elif "show firewall allow rules" in t4_action:
+                                            show_l3_firewall_allow_rules(api_key, network_id)
+
+                                        elif "delete firewall rule" in t4_action:
+                                            remove_l3_firewall_rule(api_key, network_id, t4_action)
+
 
                                         elif "select interface range" in t4_action:
                                             interface_range = select_interface_range(t4_action)

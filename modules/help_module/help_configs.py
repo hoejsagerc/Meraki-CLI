@@ -132,6 +132,13 @@ update vlan..............................Update vlan information
 delete vlan..............................Delete vlan from network
 select interface range [x-y].............Select a range of interfaces
 select interface [x].....................Select a single interface
+set dhcp vlan [x]........................Configure DHCP for a specific VLAN
+show dhcp vlan [x].......................Show DHCP config for a specific VLAN
+set firewall rule........................Creates a new firewall rule
+show firewall rules......................Show a list of all firewall rules
+show firewall block rules................Show a list of all rules which are set to block
+show firewall allow rules................Show a list of all rules which are set to allow
+delete firewall rule [x].................Delete firewall defined by number
 
     """
 
