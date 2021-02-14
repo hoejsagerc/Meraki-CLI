@@ -102,9 +102,3 @@ def set_l3_firewall_rule(api_key, net_id):
     else:
         print("An error occured, couldn't configure the firewall rule")
         return response
-
-
-
-#api_key = "c8f989abf579c4f0e39a8115159fa9a6100066cd"
-#net_id = "L_743656888469554260"
-#set_l3_firewall_rule(api_key, net_id)

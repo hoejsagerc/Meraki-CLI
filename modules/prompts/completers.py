@@ -10,11 +10,12 @@
         23.01.2021
 """
 
-__all__ = ['tier1_completer', 'tier2_completer', 'tier3_completer', 'tier4_completer', 'mx_int_completer','mx_int_range_completer']
+__all__ = ['tier1_completer', 'tier2_completer', 'tier3_completer', 'tier4_mx_completer', 'mx_int_completer','mx_int_range_completer', 'tier4_ms_completer', 'ms_int_completer', 'ms_int_range_completer']
 
 # User Exec Mode
 def tier1_completer():
     return ['enable', 'exit', 'help', 'new user', 'new', 'user']
+
 
 # User Enabled Mode
 def tier2_completer():
@@ -35,6 +36,7 @@ def tier2_completer():
     'terminal',
     'brief']
 
+
 # Global Config Mode
 def tier3_completer():
     return [
@@ -50,7 +52,11 @@ def tier3_completer():
         'show network ap brief',
         'show network mx',
         'show network mx brief',
+        'show run ssids',
+        'show ssids brief',
+        'show enabled ssids',
         'select mx',
+        'select switch'
         'exit', 
         'help',
         'select',
@@ -63,11 +69,12 @@ def tier3_completer():
         'ap',
         'mx',
         'brief'
+        'ssids',
+        'enabled'
     ]
 
 
-
-def tier4_completer():
+def tier4_mx_completer():
     return ['exit',
         'help',
         'show interfaces',
@@ -90,6 +97,7 @@ def tier4_completer():
         'delete'
     ]
 
+
 def mx_int_completer():
     return ['exit', 
         'help',
@@ -104,6 +112,7 @@ def mx_int_completer():
         'access'
     ]
 
+
 def mx_int_range_completer():
     return ['exit',
         'help',
@@ -111,3 +120,24 @@ def mx_int_range_completer():
         'set',
         'interface',
         'access']
+
+
+def tier4_ms_completer():
+    return [
+        'exit',
+        'help'
+    ]
+
+
+def ms_int_completer():
+    return [
+        'exit',
+        'help'
+    ]
+
+
+def ms_int_range_completer():
+    return [
+        'exit',
+        'help'
+    ]

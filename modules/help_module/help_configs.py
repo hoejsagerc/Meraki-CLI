@@ -10,11 +10,12 @@
         23.01.2021
 """
 
-__all__ = ['help_user_exec', 'help_user_enabled', 'help_global_config', 'help_selected_network', 'mx_interface_range_help', 'help_selected_mx']
+__all__ = ['help_user_exec', 'help_user_enabled', 'help_global_config', 'help_selected_network', 'mx_interface_range_help', 'help_selected_mx', 'help_selected_ms']
 
 
 def help_user_exec():
     return """
+    
     Welcome to the Meraki CLI Tool v0.0.1
 
     Description:
@@ -115,11 +116,17 @@ show network mx brief....................Show MX's in network
 delete network...........................Deletes network
 set device name..........................Renames a device
 test network connection..................Tests if network is online
+show run ssids...........................Show verbose info on all SSID's
+show ssids brief.........................Show brief info on all SSID's
+show enabled ssids.......................Show all enabled SSID's
+disable ssid [x].........................Disable a specific SSID
+enable ssid [x]..........................Enable a specific SSID
 
     """
 
 def help_selected_mx():
     return """
+
 HELP:
 __________________________________________________________________
 help / ?.................................Shows the help menu
@@ -145,11 +152,22 @@ delete firewall rule [x].................Delete firewall defined by number
 
 def mx_interface_range_help():
     return """
+
 HELP:
 __________________________________________________________________
 help / ?.................................Shows the help menu
 exit.....................................Exit to last menu
 set interface access.....................Configure the range as access ports
 set interface trunk......................Configure the range as trunk ports
+
+    """
+
+
+def help_selected_ms():
+    return """
+
+__________________________________________________________________
+help / ?.................................Shows the help menu
+exit.....................................Exit to last menu
 
     """

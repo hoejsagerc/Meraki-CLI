@@ -17,13 +17,7 @@ from prompt_toolkit.formatted_text import HTML
 from prompt_toolkit.styles import Style
 
 
-__all__ = ['con_toolbox', 'r_prompt', 'menu_welcome', 'rprompt_style', 'get_net_name', 'get_net_id', 'get_mx_name', 'get_mx_serial', 'get_interface', 'delete_history_file', 'select_interface_range']
-
-
-#TODO - Working on ...........................
-
-#TODO - .......................................
-
+__all__ = ['con_toolbox', 'r_prompt', 'menu_welcome', 'rprompt_style', 'get_net_name', 'get_net_id', 'get_device_name', 'get_device_serial', 'get_interface', 'delete_history_file', 'select_interface_range']
 
 
 def con_toolbox(api_key):
@@ -161,46 +155,16 @@ def get_net_id(org_id, api_key, network_name):
             return net['id']
 
 
-def get_mx_name(api_key, net_id, mx_str):
+def get_device_name1(api_key, net_id, device_str):
 
-    mx = mx_str.split()
-    if len(mx_str.split()) > 2:
-        index_len = len(mx_str)
-        mx_name = ""
-        for x in mx_str.split()[2:index_len + 1]:
-            mx_name += x
-            mx_name += " "
-        mx_name = mx_name.rstrip()
+    if len(device_str.split()) == 3:
+        try:
+            output = (device_str.split())[2]
+            device_name = output
+        except:
+            pass
     else:
-        mx_name = mx_str.spli()[2]
-
-    url = "https://api.meraki.com/api/v1/networks/{}/devices".format(net_id)
-
-    payload = None
-
-    headers = {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "X-Cisco-Meraki-API-Key": api_key
-    }
-    try:
-        response = requests.request('GET', url, headers=headers, data = payload)
-
-        for device in response.json():
-            if "MX" in device['model']:
-                try:
-                    if mx_name == device['name']:
-                        return mx_name
-                    else:
-                        print("Couldn't find device in network...")
-                
-                except:
-                    pass
-    except:
-        print("Couldn't find the mx...")
-
-
-def get_mx_serial(api_key, net_id, mx_name):
+        print("Length of string is wrong...")
 
     url = "https://api.meraki.com/api/v1/networks/{}/devices".format(net_id)
 
@@ -214,18 +178,63 @@ def get_mx_serial(api_key, net_id, mx_name):
 
     response = requests.request('GET', url, headers=headers, data = payload)
 
-    try:    
+    if device_name != None:
         for device in response.json():
-            if "MX" in device['model']:
-                try:
-                    if mx_name == device['name']:
-                        mx_serial = device['serial']
-                        return mx_serial
+            if device['name'] == device_name:
+                return device_name
+    else:
+        print("Couldn't find the device in the network...")
 
-                except:
-                    pass
-    except:
-        print("Couldn't find mx...")
+
+def get_device_name(api_key, net_id, device_str):
+
+    if len(device_str.split()) == 3:
+        try:
+            output = (device_str.split())[2]
+            device_name = output
+        except:
+            pass
+    else:
+        print("Length of string is wrong...")
+
+    url = "https://api.meraki.com/api/v1/networks/{}/devices".format(net_id)
+
+    payload = None
+
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-Cisco-Meraki-API-Key": api_key
+    }
+
+    response = requests.request('GET', url, headers=headers, data = payload)
+    #print(json.dumps(response.json(), indent=4, sort_keys=True))
+
+    if device_name != None:
+        for device in response.json():
+            if device['name'] == device_name:
+                return device_name
+    else:
+        print("Couldn't find the device in the network...")
+
+
+def get_device_serial(api_key, net_id, device_name):
+
+    url = "https://api.meraki.com/api/v1/networks/{}/devices".format(net_id)
+
+    payload = None
+
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-Cisco-Meraki-API-Key": api_key
+    }
+
+    response = requests.request('GET', url, headers=headers, data = payload)
+
+    for device in response.json():
+        if device_name == device['name']:
+            return device['serial']
 
 
 def get_interface(int_str):
@@ -247,7 +256,6 @@ def get_interface(int_str):
     else:
         interface = int_str.spli()[2]
 
-
     return interface
 
 
@@ -262,9 +270,6 @@ def select_interface_range(command):
     print(range_list)
 
     return range_list
-
-
-
 
 
 def delete_history_file():

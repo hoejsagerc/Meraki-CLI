@@ -5,6 +5,7 @@ from modules.user_creation import *
 from modules.network_configs import *
 from modules.mx_appliance import *
 from modules.network_info import *
+from modules.wireless import *
 
 __all__ = [
 #! modules/help_module
@@ -14,6 +15,7 @@ __all__ = [
 'help_selected_network',
 'mx_interface_range_help',
 'help_selected_mx',
+'help_selected_ms',
 
 #! modules/prompts
 'con_toolbox', 
@@ -22,17 +24,20 @@ __all__ = [
 'rprompt_style',
 'get_net_name', 
 'get_net_id', 
-'get_mx_name', 
-'get_mx_serial', 
+'get_device_name', 
+'get_device_serial', 
 'get_interface',
 'tier1_completer', 
 'tier2_completer', 
 'tier3_completer', 
-'tier4_completer', 
+'tier4_mx_completer', 
 'mx_int_completer',
 'delete_history_file',
 'select_interface_range',
 'mx_int_range_completer',
+'tier4_ms_completer',
+'ms_int_completer', 
+'ms_int_range_completer',
 
 #! modules/user_creation
 'create_connection', 
@@ -77,5 +82,12 @@ __all__ = [
 'show_network_switches',
 'show_net_status',
 'show_specific_network_status',
-'ping_tool'
+'ping_tool',
+
+#! modules/wireless
+'create_new_ssid', 
+'show_run_all_ssids', 
+'show_all_ssids', 
+'show_enabled_ssids',
+'change_ssid_status'
 ]

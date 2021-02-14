@@ -124,6 +124,9 @@ while 1:
                             else:
                                 set_device_name(api_key)
 
+                        elif "set new ssid" in t3_action:
+                            create_new_ssid(api_key, network_id, t3_action)
+
                         
 
                         ###* ------- Do Show Commands ------- ###
@@ -181,10 +184,98 @@ while 1:
                             else:
                                 ping_tool(api_key, network_id, t3_action)
 
+                        elif "show run ssids" in t3_action:
+                            if network_id == "None":
+                                print("No network has been selected...")
+                            else:
+                                show_run_all_ssids(api_key, network_id)
+
+                        elif "show ssids brief" in t3_action:
+                            if network_id == "None":
+                                print("No network has been selected...")
+                            else:
+                                show_all_ssids(api_key, network_id)
+
+                        elif "show enabled ssids" in t3_action:
+                            if network_id == "None":
+                                print("No network has been selected...")
+                            else:
+                                show_enabled_ssids(api_key, network_id)
+
+                        elif "disable ssid" in t3_action:
+                            if network_id == "None":
+                                print("No network has been selected...")
+                            else:
+                                change_ssid_status(api_key, network_id, t3_action)
+
+                        elif "enable ssid" in t3_action:
+                            if network_id == "None":
+                                print("No network has been selected...")
+                            else:
+                                change_ssid_status(api_key, network_id, t3_action)
+
+                        
+                        elif "select switch" in t3_action or "sel swi" in t3_action:
+                            if network_name != "None" and network_name != "":
+                                ms_name = get_device_name(api_key, network_id, t3_action)
+                                ms_serial = get_device_serial(api_key, network_id, ms_name)
+
+                                if ms_name != "None" and ms_name != "":
+                                    while 1:
+                                        ##########################* MS CONFIGURATIONS ##########################
+
+                                        interface = ""
+                                        prompt_var =  f'{ms_name}(config)#'
+                                        t4_compl = WordCompleter(tier4_ms_completer(), ignore_case=True)
+                                        t4_action = prompt(prompt_var, history=FileHistory('history.txt'), auto_suggest=AutoSuggestFromHistory(), completer=t4_compl, bottom_toolbar=con_toolbox(api_key), rprompt=r_prompt(network_name))
+
+                                        if t4_action == "exit" or "ex" in t4_action:
+                                            break
+
+                                        if t4_action == "?":
+                                            print(help_selected_ms())
+
+
+                                        elif "select interface" in t4_action:
+                                            interface = get_interface(t4_action)
+                                            while 1:
+                                                ##########################* MS INTERFACE CONFIGURATIONS ##########################
+
+                                                prompt_if_var = f'{ms_name}(config-if)#'
+                                                ms_int_compl = WordCompleter(ms_int_completer(), ignore_case=True)
+                                                ms_int_action = prompt(prompt_if_var, history=FileHistory('history.txt'), auto_suggest=AutoSuggestFromHistory(), completer=ms_int_compl, bottom_toolbar=con_toolbox(api_key), rprompt=r_prompt(network_name))
+
+                                                if ms_int_action == "exit" or "ex" in ms_int_action:
+                                                    break
+
+                                                elif ms_int_action == "help" or ms_int_action == "?":
+                                                    print(help_selected_ms())
+
+
+                                        elif "select interface range" in t4_action:
+                                            interface_range = select_interface_range(t4_action)
+                                            while 1:
+                                                ##########################* MS INTERFACE RANGE CONFIGURATIONS ##########################
+
+                                                prompt_if_range_var = f'{ms_name}(config-if-range)#'
+                                                ms_int_range_compl = WordCompleter(ms_int_range_completer(), ignore_case=True)
+                                                ms_int_range_action = prompt(prompt_if_range_var, history=FileHistory('history.txt'), auto_suggest=AutoSuggestFromHistory(), completer=ms_int_range_compl, bottom_toolbar=con_toolbox(api_key), rprompt=r_prompt(network_name))
+
+                                                if ms_int_range_action == "exit" or "ex" in ms_int_range_action:
+                                                    break
+
+                                                elif ms_int_range_action == "help" or ms_int_range_action == "?":
+                                                    print(mx_interface_range_help())
+
+
+                            else:
+                                print("No network has been selected.")
+
+
                         elif "select mx" in t3_action or "sel mx" in t3_action:
                             if network_name != "None" and network_name != "":
-                                mx_name = get_mx_name(api_key, network_id, t3_action)
-                                mx_serial = get_mx_serial(api_key, network_id, mx_name)
+                                mx_name = get_device_name(api_key, network_id, t3_action)
+                                mx_serial = get_device_serial(api_key, network_id, mx_name)
 
                                 if mx_name != "None" and mx_name != "":
                                     while 1:
@@ -192,7 +283,7 @@ while 1:
 
                                         interface = ""
                                         prompt_var =  f'{mx_name}(config)#'
-                                        t4_compl = WordCompleter(tier4_completer(), ignore_case=True)
+                                        t4_compl = WordCompleter(tier4_mx_completer(), ignore_case=True)
                                         t4_action = prompt(prompt_var, history=FileHistory('history.txt'), auto_suggest=AutoSuggestFromHistory(), completer=t4_compl, bottom_toolbar=con_toolbox(api_key), rprompt=r_prompt(network_name))
 
                                         if t4_action == "exit" or "ex" in t4_action:
